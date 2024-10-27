@@ -12,9 +12,6 @@ export default async function CustomersPage() {
       <div className="flex items-center mb-6">
         <h1 className="text-lg font-semibold md:text-2xl">Customers</h1>
       </div>
-      <Suspense fallback={<div>Loading customers...</div>}>
-        <CustomersTable initialCustomers={customers} />
-      </Suspense>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/layout/theme-provider";
 import Sidebar from "@/components/layout/sidebar";
-import Navbar from "@/components/layout/navbar";
+import Header from "@/components/layout/header";
 import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} bg-background`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -29,10 +29,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="flex h-screen overflow-hidden">
-            <Sidebar className="border-r" />
-            <div className="flex flex-col flex-1">
-              <Navbar />
-              <main className="flex-1 overflow-y-auto bg-background p-6">
+            <Sidebar className="hidden md:flex border-r border-gray-200 dark:border-gray-700" />
+            <div className="flex flex-col flex-1 overflow-x-hidden">
+              <Header />
+              <main className="flex-1 overflow-y-auto p-4 md:p-6">
                 {children}
               </main>
             </div>
